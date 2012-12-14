@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>AppDev Pairing Matrix</title>
+    <link type="text/css" href="/stylesheets/base.css" rel="stylesheet" media="screen" />
+  </head>
+  <body class='pairing-matrix pairing-matrix_index'>
+    <div class='masthead'>
+      <div class='content'>
+        Pairing Matrix
+      </div>
+    </div>
+    <div class='page'>
+      <div ng-app='pairingMatrix' ng-controller='PairingMatrixController'>
+        <div id='main'>
+          <h1>The Pairing Matrix</h1>
+          <div class='controls'></div>
+          <div id='matrix'>
+            <table>
+              <tr>
+                <th></th>
+                <th ng-repeat='person in people'>{{person}}</th>
+              </tr>
+              <tr ng-repeat='person in people'>
+                <td class='name'>{{person}}</td>
+                <td ng-dblclick='increasePairCount(person, col)' ng-repeat='col in people'>
+                  {{cell(person, col)}}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id='sidebar'>
+          <h2>Add Yourself</h2>
+          <form ng-submit='addPerson()'>
+            <div>
+              <input ng-model='newPersonName' />
+            </div>
+            <div>
+              <input type='submit' value='Add Me!' />
+            </div>
+          </form>
+          <h2>Pairers</h2>
+          <ul>
+            <li ng-repeat='person in people'>
+              {{person}} ({{totalPairCount(person)}}, {{uniquePairCount(person)}})
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- / %script{:src => "http://code.jquery.com/jquery.min.js"} -->
+    <script src='/javascripts/lib/underscore.js'></script>
+    <script src='/javascripts/lib/angular/angular.js'></script>
+    <script src='/javascripts/lib/angular/angular-resource.js'></script>
+    <script src='/javascripts/app.js'></script>
+    <script src='/javascripts/services.js'></script>
+    <script src='/javascripts/controllers.js'></script>
+  </body>
+</html>

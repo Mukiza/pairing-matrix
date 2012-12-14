@@ -1,0 +1,1 @@
+web: lein trampoline run -m pairing-signup.server

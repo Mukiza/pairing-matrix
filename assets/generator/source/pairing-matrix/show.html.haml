@@ -1,0 +1,32 @@
+---
+title: "AppDev Pairing Matrix"
+---
+
+%div{"ng-app" => "pairingMatrix", "ng-controller"=>"PairingMatrixController"}
+  #main
+    %h1 The Pairing Matrix
+    %div.controls
+    #matrix
+      %table
+        %tr
+          %th
+          %th{"ng-repeat" => "person in pairingMatrix.people"} {{person.name}}
+        %tr{"ng-repeat" => "person in pairingMatrix.people"}
+          %td.name {{person.name}}
+          %td{{"ng-repeat" => "col in pairingMatrix.people", "ng-dblclick" => "increasePairCount(person.name, col.name)"}}
+            {{cell(person.name, col.name)}}
+
+
+  #sidebar
+    %h2 Add Yourself
+    %form{"ng-submit" => "addPerson()"}
+      %div
+        %input{"ng-model" => "newPersonName"}
+      %div
+        %input{:type => "submit", :value => "Add Me!"}/
+
+    %h2 Pairers
+    %ul
+      %li{"ng-repeat" => "person in pairingMatrix.people"}
+        {{person.name}} ({{totalPairCount(person.name)}}, {{uniquePairCount(person.name)}})
+    
