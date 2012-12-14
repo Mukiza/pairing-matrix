@@ -2,7 +2,7 @@
 
 Source for http://pairing-matrix.heroku.com
 
-This is a tiny clojure app for using a simple online pairing matrix.
+This is a tiny clojure/angular app for using a simple online pairing matrix.
 
 The code's not very good, but it works!
 
