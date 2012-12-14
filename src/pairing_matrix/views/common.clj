@@ -1,7 +1,7 @@
 (ns pairing-matrix.views.common
   (:require [net.cgrand.enlive-html :as h]
             markdown)
-  (use pairing-matrix.utils))
+  (:use pairing-matrix.utils))
 
 (defonce template-dir "pairing_matrix/templates/")
 
