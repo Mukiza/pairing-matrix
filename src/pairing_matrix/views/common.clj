@@ -1,9 +1,7 @@
 (ns pairing-matrix.views.common
   (:require [net.cgrand.enlive-html :as h]
             markdown)
-  (use [cemerick.friend :only (current-authentication)]
-       pairing-matrix.utils
-       pairing-matrix.models.permissions))
+  (use pairing-matrix.utils))
 
 (defonce template-dir "pairing_matrix/templates/")
 
@@ -72,34 +70,6 @@
   [errors, key]
   (if-let [messages (get errors key)]
     (h/html-content (format-error-messages messages))))
-
-(defn relation-count
-  [record relation-key]
-  (get-in record [relation-key 0 :count] 0))
-
-(defn linked-username
-  [record]
-  (h/do->
-   (h/content (:username record))
-   (set-path record user-path)))
-
-(defn timestamp->string
-  [timestamp]
-  (-> (java.text.SimpleDateFormat. "MMM dd, yyyy hh:mma")
-      (.format timestamp)))
-
-(defn timestamp->shortstring
-  [timestamp]
-  (-> (java.text.SimpleDateFormat. "MMM dd, yyyy")
-      (.format timestamp)))
-
-(defn created-on
-  [x]
-  (timestamp->string (:created_on x)))
-
-(defn created-on-short
-  [x]
-  (timestamp->shortstring (:created_on x)))
 
 (defmacro keep-when
   [condition]

@@ -6,8 +6,7 @@
             [pairing-matrix.data-mappers.pair-count :as pair-count]
             [pairing-matrix.data-mappers.person :as person])
 
-  (:use [pairing-matrix.controllers.common :only (if-valid view)]
-        pairing-matrix.controllers.common.content
+  (:use [pairing-matrix.controllers.common :only (view)]
         pairing-matrix.utils))
 
 ;; This should probably be in another controller. Its purpose is to
