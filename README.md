@@ -1,8 +1,10 @@
-# Grateful Place
+# Pairing Matrix
 
-Source for http://www.gratefulplace.com .
+Source for http://pairing-matrix.heroku.com
 
-For a walkthrough, check out http://www.flyingmachinestudios.com/programming/dissecting-gratefulplace/
+This is a tiny clojure app for using a simple online pairing matrix.
+
+The code's not very good, but it works!
 
 ## License
 
